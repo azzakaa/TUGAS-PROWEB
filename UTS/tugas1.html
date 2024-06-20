@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Kredit</title>
+</head>
+
+<body>
+    <h1>Kalkulator Kredit</h1>
+    <div class="kalkulator">
+        <form action="" method="post">
+            <input type="text" name="jumlah_pinjaman" placeholder="Jumlah Pinjaman">
+            <input type="text" name="lama_pinjaman" placeholder="Lama Pinjaman (tahun)">
+            <input type="text" name="bunga_pinjaman" placeholder="Bunga Pinjaman (%)">
+            <input type="text" name="cicilan_tiap" placeholder="Cicilan Tiap Bulan">
+            <input type="date" name="mulai_meminjam">
+            <input type="radio" name="perhitungan_bunga" value="flat">Flat
+            <input type="radio" name="perhitungan_bunga" value="efektif">Efektif
+            <input type="submit" value="Hitung">
+        </form>
+    </div>
+    <div class="hasil">
+        <h2>Hasil</h2>
+        <table>
+            <tr>
+                <th>Data Anda</th>
+                <th>Nilai</th>
+            </tr>
+            <tr>
+                <td>Jumlah Pinjaman</td>
+                <td id="jumlah_pinjaman"></td>
+            </tr>
+            <tr>
+                <td>Jangka Waktu Pinjaman</td>
+                <td id="lama_pinjaman"></td>
+            </tr>
+            <tr>
+                <td>Bunga per Tahun</td>
+                <td id="bunga_pinjaman"></td>
+            </tr>
+            <tr>
+                <td>Cicilan Tiap</td>
+                <td id="cicilan_tiap"></td>
+            </tr>
+            <tr>
+                <td>Perhitungan Bunga</td>
+                <td id="perhitungan_bunga"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Angsuran Anda</th>
+                <th>Nilai</th>
+            </tr>
+            <tr>
+                <td>Angsuran Pokok per Bulan</td>
+                <td id="angsuran_pokok"></td>
+            </tr>
+            <tr>
+                <td>Angsuran Bunga per Bulan</td>
+                <td id="angsuran_bunga"></td>
+            </tr>
+            <tr>
+                <td>Total Angsuran per Bulan</td>
+                <td id="total_angsuran"></td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>.table_form {border:1px solid #3B448F; width:100%; font-size: 100%; font-family: arial, verdana;}
+    .table_form td {padding:5px; vertical-align:top; border-bottom:1px solid #EEEEEE; padding-top: 10px;}
+    .table_form .table_header {background-color: #3B448F; color:#FFFFFF; font-family: arial, verdana; font-size:110%; font-weight:bold;}
+    .table_form .table_description {color:#777777; font-size:90%; font-family: arial, verdana;}
+    .table_form .table_left {text-align:right; width:40%; }
+    .table_form .table_right {text-align:left; width:58%; }
+    .table_form .input_long {width: 50%}
+    .table_form .input_short {width: 30%}
+    .table_form .bg_odd {background-color:#EBEDFA}
+    
+    .error {color:red; font-size:110%; font-family: arial, verdana; padding:5px; border: 1px solid #E04869; margin-bottom: 5px;}
+    
+    .table_result {font-family: arial, verdana;width:100%}
+    .table_result td {padding:5px 10px 5px 10px; vertical-align:top; border-bottom:1px solid #EBEDFA; }
+    .table_result .table_header {background-color: #3B448F; color:#FFFFFF; font-size:110%; font-weight:bold;}
+    .table_result .table_description {color:#333333; font-size:95%;}
+    .table_result .table_left {text-align:right; width:40%; }
+    .table_result .table_right {text-align:left; width:58%; }
+    
+    
+    .table_result .table_sum {font-size:110%; border: 2px solid #555555; font-weight: bold; background-color:#EFEFEF;}
+    
+    .table_result .bg_odd {background-color:#EBEDFA}
+    .table_result .table_column td {border-left:1px solid #3B448F; text-align: right}
+    .table_result li {padding: 2px;}
+
+    .data_anda {font-family: arial, verdana;width:100%}
+    .data_anda td {padding:5px 10px 5px 10px; vertical-align:top; border-bottom:1px solid #EBEDFA; }
+    .data_anda .table_header {background-color: #3B448F; color:#FFFFFF; font-size:110%; font-weight:bold;}
+    .data_anda .table_description {color:#333333; font-size:95%;}
+    .data_anda .table_left {text-align:right; width:40%; }
+    .data_anda .table_right {text-align:left; width:58%; }
+    
+    
+    .data_anda .table_sum {font-size:110%; border: 2px solid #555555; font-weight: bold; background-color:#EFEFEF;}
+    
+    .data_anda .bg_odd {background-color:#EBEDFA}
+    .data_anda .table_column td {border-left:1px solid #3B448F; text-align: right}
+    .data_anda li {padding: 2px;}
+    
+    .show_currency {clear: both; font-size:95%; width: 57%; margin-top: 3px; padding:5px; color:#A88D42;}
+    
+    .disclaimer {padding: 5px; font-family: verdana, arial; background-color:#F5D5DB; border: 1px solid #C92443; width: 90%; font-size: 0.9em; line-height: 1.5em; margin-bottom: 5px;}
+    
+    .button_submit {padding:5px; font-size: 110%; width: 50%;}
+    
+    .result_total {font-weight: bold; background-color: #D3EEF0; padding: 5px 0px 5px 0px; color: #333333}
+    
+    .table_description_floating {color:#577802; font-size:90%; font-family: arial, verdana; padding-top: 10px;}
+    
+    .plus_minus {margin-left: 10px; font-family: monospace}
+    .plus_minus a {border: 1px solid #CCCCCC; background-color: #EFEFEF; padding: 2px; margin-left: 5px; text-decoration: none; cursor:pointer}
+    .plus_minus a:hover {background-color: #CCCCCC}
+    
+    .to_right {width:170px; float:right; font-size: 90%; margin-left: 5px;}
+    .to_right ul {margin:0px;}
+    .to_right li {margin:0px;}
+    
+    .help_icon {display:inline; float:right; cursor: pointer}
+    
+    .cr {text-align: right; width: 50%}
+    
+    .table_list {margin-top: 10px; border-bottom:1px solid #CCCCCC; }
+    .table_list td {padding: 6px; line-height:1.4em;vertical-align:top}
+    .header_list {line-height: 1.5em; font-weight: bold; padding:6px; background-color:#e5eacf; border-top:2px solid #AAAAAA}
+    </style>
+</head>
+<body>
+  
+  <table class="table_form" cellpadding="0" cellspacing="0"><tbody><tr class="table_header">
+    <td colspan="3">Kalkulator Kredit</td>
+    </tr>
+<tr class="bg_odd">
+    <td class="table_left">
+        Jumlah Pinjaman</td>
+    <td>:</td>
+    <td class="table_right">
+    
+    <div>
+        <input type="text" value="120000000" class="input_long" name="loan_amount" id="input_loan_amount" onkeyup="showCurrency('input_loan_amount', 'id_loan_amount')"> rupiah
+    
+
+    </div>
+    <div class="show_currency">Rp <span id="id_loan_amount">120.000.000,00</span></div></td>
+</tr>
+<tr class="bg_even">
+    <td class="table_left">
+        Lama Pinjaman</td>
+    <td>:</td>
+    <td class="table_right"><div>
+    <input type="text" value="24" class="input_short" name="loan_term" id="input_loan_term" onkeyup="showDivision('input_loan_term', 'id_loan_term', 'year_to_month')"> bulan
+    
+    
+    </div>
+    <div class="show_currency">= <span id="id_loan_term">2.00</span> tahun</div></td>
+</tr>
+<tr class="bg_odd">
+    <td class="table_left">
+        Bunga Pinjaman</td>
+    <td>:</td>
+    <td class="table_right">
+    <div> 
+        <input type="text" value="8.6" class="input_short" name="interest_rate" id="input_interest_rate" onkeyup="showDivision('input_interest_rate', 'id_interest_rate', 'year_to_month')"> % / tahun
+
+    </div><div class="show_currency">= <span id="id_interest_rate">0.72</span> % / bulan</div></td>
+</tr>
+<tr class="bg_even">
+    <td class="table_left">
+        Cicilan Tiap</td>
+    <td>:</td>
+    <td class="table_right"><select class="input_long" name="cicilan_tiap"><option value="BULAN" selected="">BULAN</option><option value="TAHUN">TAHUN</option></select></td>
+</tr>
+<tr class="bg_odd">
+    <td class="table_left">
+        Mulai Meminjam</td>
+    <td>:</td>
+    <td class="table_right"><select class="input_short" name="mulai_meminjam_month"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10" selected="">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select><select class="input_short" name="mulai_meminjam_year"><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023" selected="">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option></select></td>
+</tr>
+<tr class="bg_even">
+    <td class="table_left">
+        Perhitungan Bunga</td>
+    <td>:</td>
+    <td class="table_right"><select class="input_long" name="perhitungan_bunga"><option value="FLAT" selected="">FLAT</option><option value="EFEKTIF">EFEKTIF</option><option value="ANUITAS">ANUITAS</option></select></td>
+</tr><tr>
+    <td colspan="2"></td><td>
+      <button onclick="calculateFlatInterest()">Kalkulasi</button>
+    </td>
+    </tr></tbody>
+  </table>
+    
+<br>
+    <table class="data_anda" style="border: solid 1px;" cellpadding="0" cellspacing="0"></table>
+    <br>
+    <table class="table_result" style="border: solid 1px" cellpadding="0" cellspacing="0"></table>
+
+    <script src="JavaSCript.js"></script>
+
+<script>
+   function calculateFlatInterest() {
+    var loanAmount = parseFloat(document.getElementById("input_loan_amount").value.replace(/,/g, ''));
+    var loanTerm = parseFloat(document.getElementById("input_loan_term").value);
+    var interestRate = parseFloat(document.getElementById("input_interest_rate").value);
+    var paymentType = document.querySelector('select[name="cicilan_tiap"]').value;
+    var startInterest = document.querySelector('select[name="mulai_meminjam_month"] option:checked' ).text;
+    var startYear = document.querySelector('select[name="mulai_meminjam_year"]').value;
+
+    // Lakukan perhitungan kembali
+    var totalInterest = loanAmount * (interestRate / 100) * (loanTerm / 12);
+    var totalPayment = loanAmount + totalInterest;
+    var monthlyPayment = totalPayment / loanTerm;
+    var principalPerMonth = loanAmount / loanTerm;
+    var interestPerMonth = totalInterest / loanTerm;
+
+    // Menampilkan hasil perhitungan dalam tabel
+    var resultTable = document.querySelector(".table_result");
+    var dataAnda = document.querySelector(".data_anda");
+
+    
+    resultTable.innerHTML = `
+      <tr class="table_header" >
+        <td colspan="3">Angsuran Anda</td>
+      </tr>
+      <tr class="bg_odd">
+        <td>Angsuran Pokok per Bulan</td>
+        <td>:</td>
+        <td>Rp ${principalPerMonth}</td>
+      </tr>
+      <tr class="bg_feven">
+        <td>Angsuran Bunga per Bulan</td>
+        <td>:</td>
+        <td>Rp ${interestPerMonth}</td>
+      </tr>
+      <tr class="bg_odd">
+        <td class="table_left"></td>
+        <td></td>
+        <td class="table_right">
+          <div class="cr">________________ (+)</div>
+        </td>
+      </tr>
+      <tr class="bg-odd">
+        <td>Total Angsuran per Bulan</td>
+        <td>:</td>
+        <td>Rp ${monthlyPayment}</td>
+      </tr>
+    `;
+
+dataAnda.innerHTML = `
+<tr class="table_header">
+      <td colspan="3">Data Anda</td>
+    </tr>
+    <tr class="bg_odd">
+      <td class="table_left">Jumlah Pinjaman</td>
+      <td>:</td>
+      <td class="table_right" id="loanAmount">${loanAmount}</td>
+    </tr>
+    <tr class="bg_even">
+      <td class="table_left">Lama Pinjaman</td>
+      <td>:</td>
+      <td class="table_right" id="loanTerm">${loanTerm} bulan
+        <div class="table_description">(${loanTerm/12} tahun)</div>
+      </td>
+    </tr>
+    <tr class="bg_odd">
+      <td class="table_left">Bunga per Tahun</td>
+      <td>:</td>
+      <td class="table_right" id="interestRate">${interestRate}% /tahun
+        <div class="table_description">(${interestRate/12} / bulan)</div>
+      </td>
+    </tr>
+    <tr class="bg_even">
+      <td class="table_left">Cicilan Tiap</td>
+      <td>:</td>
+      <td class="table_right" id="paymentType">${paymentType}</td>
+    </tr>
+    <tr class="bg_odd">
+      <td class="table_left">Mulai Meminjam</td>
+      <td>:</td>
+      <td class="table_right" id="startDate">${startInterest} ${startYear}</td>
+    </tr>
+    <tr class="bg_even">
+      <td class="table_left">Perhitungan Bunga</td>
+      <td>:</td>
+      <td class="table_right"><strong>FLAT</strong></td>
+    </tr>
+    `;
+  }
+
+  function updateShowCurrency(inputId, showCurrencyClass) {
+    var inputElement = document.getElementById(inputId);
+    calculateFlatInterest(); // Pemanggilan perhitungan kembali saat nilai berubah
+  }
+
+</script>
+    
+</body>
+</html>
